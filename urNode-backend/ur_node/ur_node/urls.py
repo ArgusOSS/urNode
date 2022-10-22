@@ -20,7 +20,7 @@ from rest_framework.schemas import get_schema_view
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("authentication/", include("authentication.urls")),
-    path("api/", include("api_app.urls")),
+    #  path("api/", include("api_app.urls")),
     path(
         "openapi",
         get_schema_view(title="urNode", description="Documentation", version="1.0.0"),
