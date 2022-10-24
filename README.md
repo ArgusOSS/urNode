@@ -12,23 +12,31 @@ Project still in development. Expect the backend and frontend to be ready in a c
 
 ## Installations
 
-This project aims to be as fast to spin up as possible. And thus, if you have the appropriate utility installed (<a href="https://docs.docker.com/compose/install/">docker-compose</a> & <a href="https://docs.docker.com/engine/install/">(docker cli + engine)</a>, It would be as simple as a:
+This project aims to be as fast to spin up as possible. And thus, if you have the appropriate utility installed (<a href="https://docs.docker.com/compose/install/">docker-compose</a> & <a href="https://docs.docker.com/engine/install/">docker cli + engine</a>.
+
+Before going further with any of the two steps, Install <a href="https://kubernetes.io/docs/tasks/tools/">Kubectl</a> to make it easier for you to interact with the kubernetes cluster.
+
+Also, Now the next steps are divided into two categories:
+
+- ### 1. If you are trying to host it locally:
+We will use <a href="https://minikube.sigs.k8s.io/docs/start/">minikube</a> for this process. Don't worry, kubernetes isn't that scary it won't haunt you too hard.
+
+We recommend using minikube with docker. So do:
 
 ```
-    docker-compose up
+minikube start --driver=docker
+```
+
+And you should now have your local k8s environment ready to go.
+
+```
+docker-compose up
 ```
 
 ## Project architecture
 
-Some notes you might not need to worry about if you're not a nerd, The project uses <a href="https://docs.docker.com/engine/swarm/">docker swarm</a> along with other compose nodes. 
-
-The default assumpton here is that you don't want to be deal with the hassle that docker clis come with. So, for the time being, we support creation of a swarm manager automatically. It is a full fleged service of it's own which manages a docker swarm when the backend asks it to. It is made so that you don't have to worry much about what runs under the hood which also happens to be the celery server.
+Some notes you might not need to worry about if you're not a nerd, The project uses <a href="https://kubernetes.io/">Kubernetes</a> along with other compose nodes. 
 
 Here is how the project architecture looks like currently:
 
 <img src="docs/_static/project_architecture.png">
-
-## Future prospects
-
-We wish to look forward to being able to automate spinning up a kubernetes network from a couple commands and provide support for existing k8s and docker swarm networks.
-
