@@ -4,18 +4,18 @@ services:
   postgres:
     image: library/postgres:12-alpine
     container_name: postgres_app_urnode
-    networks:
-      internal:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     env_file:
       - ./.env
 
+  # Redis - result backend
+  redis:
+    image: redis:2.8.19
+    hostname: redis
+
   backend:
     container_name: backend_app_urnode
-    networks:
-      default:
-      internal:
     expose:
       - "8000"
     build:
@@ -29,8 +29,31 @@ services:
       - ./urNode-backend:/app
     env_file:
       - ./.env
+    links:
+      - celery
+      - rabbit
+      - postgres
+      - redis
 
-networks:
-    default:
-    internal:
-        internal: true
+  celery:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: celery_server
+    command: celery -A Uturn worker --loglevel=info --without-gossip --without-mingle --without-heartbeat -Ofair --pool=solo
+    volumes:
+      - "./backend:/opt/uturn/backend"
+    depends_on:
+      - redis
+      - postgres
+    links:
+      - postgres
+      - rabbit
+      - redis
+
+  rabbit:
+    hostname: rabbit
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=mypass
