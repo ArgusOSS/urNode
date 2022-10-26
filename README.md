@@ -39,5 +39,5 @@ Some notes you might not need to worry about if you're not a nerd, The project u
 
 Here is how the project architecture looks like currently:
 
-<img src="docs/_static/architecture.png">
+<img src="docs/_static/architecture_.png">
 
