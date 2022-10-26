@@ -50,10 +50,10 @@ spec:
               port: 4000
           resources:
             limits:
-              cpu: 8000m
-              memory: 16G
-            requests:
               cpu: 1000m
+              memory: 2G
+            requests:
+              cpu: 2000m
               memory: 4G
           volumeMounts:
             - mountPath: /data
