@@ -18,7 +18,7 @@ Before going further with any of the two steps, Install <a href="https://kuberne
 
 Also, Now the next steps are divided into two categories:
 
-- ### 1. If you are trying to host it locally:
+### 1. If you are trying to host it locally:
 We will use <a href="https://minikube.sigs.k8s.io/docs/start/">minikube</a> for this process. Don't worry, kubernetes isn't that scary it won't haunt you too hard.
 
 We recommend using minikube with docker. So do:
