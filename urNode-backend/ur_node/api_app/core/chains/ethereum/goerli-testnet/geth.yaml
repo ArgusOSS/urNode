@@ -17,7 +17,7 @@ spec:
     spec:
       terminationGracePeriodSeconds: 300
       containers:
-        - name: EthereumMainnetgeth
+        - name: GoerliTestnetgeth
           image: ethereum/client-go
           ports:
             - { containerPort: 8545, targetPort: 8545 }
@@ -34,6 +34,7 @@ spec:
               "--http.corsdomain=*",
               "--ws",
               "--ws.addr=0.0.0.0",
+              "--goerli",
               "--ws.api=eth,net,web3",
               "--ws.origins=*",
               "--graphql",
@@ -44,6 +45,8 @@ spec:
               "--authrpc.jwtsecret=/jwt/jwt.hex",
               "--authrpc.port=8551",
               "--txlookuplimit=0",
+              "--syncmode",
+              "light"
             ]
           resources:
             requests:
@@ -60,3 +63,13 @@ spec:
             httpGet:
               path: /
               port: 8545
+          volumeMounts:
+            - name: chaindata
+              mountPath: /root/.ethereum
+      volumes:
+        - name: chaindata
+          persistentVolumeClaim:
+            claimName: chaindata-geth
+        - configMap:
+            name: geth-jwt
+          name: jwt
