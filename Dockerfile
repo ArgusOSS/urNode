@@ -8,11 +8,13 @@ RUN apt-get update \
 
 RUN pip install --upgrade pip
 
-COPY urNode-backend/ /app
-
 WORKDIR /app
 
+# copy the requirement files earlier
+COPY urNode-backend/requirements /app/requirements
 RUN pip install --no-cache-dir --compile -r requirements/run-requirements.txt
+
+COPY urNode-backend/ /app
 
 EXPOSE 8000
 
