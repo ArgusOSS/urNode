@@ -35,7 +35,7 @@ docker-compose up
 
 ## Project architecture
 
-Some notes you might not need to worry about if you're not a nerd, The project uses <a href="https://kubernetes.io/">Kubernetes</a> along with other compose nodes. 
+Some notes you might not need to worry about if you're not a nerd, The project uses <a href="https://kubernetes.io/">Kubernetes</a> to deploy the blockchain nodes. 
 
 Here is how the project architecture looks like currently:
 
