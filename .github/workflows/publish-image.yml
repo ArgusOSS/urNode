@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  docker_publish:
+  publish-backend-image-to-ghcr:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,7 +37,7 @@ jobs:
         uses: macbre/push-to-ghcr@master
         with:
           image_name: ${REPO_LC}-backend
-          image_tag: ${TAG}
+          image_tag: ${{ env.TAG }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # optionally push to the Docker Hub (docker.io)
           # docker_io_token: ${{ secrets.DOCKER_IO_ACCESS_TOKEN }}  # see https://hub.docker.com/settings/security
