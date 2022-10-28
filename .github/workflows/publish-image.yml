@@ -37,7 +37,7 @@ jobs:
         uses: macbre/push-to-ghcr@master
         with:
           image_name: ${REPO_LC}-backend
+          image_tag: ${TAG}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          tags: ${TAG}
           # optionally push to the Docker Hub (docker.io)
           # docker_io_token: ${{ secrets.DOCKER_IO_ACCESS_TOKEN }}  # see https://hub.docker.com/settings/security
