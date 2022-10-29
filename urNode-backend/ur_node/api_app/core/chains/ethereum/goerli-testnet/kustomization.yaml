@@ -6,6 +6,7 @@ resources:
   - service.yaml
   - geth.yaml
   - prysm.yaml
+  - 0namespace.yaml
 configMapGenerator:
   - name: geth-jwt
     files: ["jwt.hex"]

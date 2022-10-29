@@ -17,14 +17,14 @@ spec:
     spec:
       terminationGracePeriodSeconds: 300
       containers:
-        - name: GoerliTestnetgeth
+        - name: geth
           image: ethereum/client-go
           ports:
-            - { containerPort: 8545, targetPort: 8545 }
-            - { containerPort: 8546, targetPort: 8546 }
-            - { containerPort: 8551, targetPort: 8551 }
-            - { containerPort: 30303, protocol: TCP, targetPort: 30303 }
-            - { containerPort: 30303, protocol: UDP, targetPort: 30303 }
+            - { containerPort: 8545 }
+            - { containerPort: 8546 }
+            - { containerPort: 8551 }
+            - { containerPort: 30303, protocol: TCP }
+            - { containerPort: 30303, protocol: UDP }
           args:
             [
               "--http",
@@ -53,8 +53,8 @@ spec:
               memory: 2G
               cpu: 1000m
             limits:
-              memory: 3G
-              cpu: 3000m
+              memory: 16G
+              cpu: 8000m
           livenessProbe:
             httpGet:
               path: /
