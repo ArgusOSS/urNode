@@ -3,13 +3,11 @@ on:
   push:
     branches:
       - master
-      - main # incase the master branch is ever renamed to main
     paths:
       - "urNode-backend/**"
   pull_request_target:
     branches:
       - master
-      - main
     paths:
       - "urNode-backend/**"
 
