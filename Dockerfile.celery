@@ -15,3 +15,5 @@ COPY urNode-backend/requirements /app/requirements
 RUN pip install --no-cache-dir --compile -r requirements/run-requirements.txt
 
 COPY urNode-backend/ /app
+
+ENTRYPOINT [ "sh", "entrypoint_celery.sh" ]

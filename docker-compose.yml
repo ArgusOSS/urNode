@@ -11,7 +11,8 @@ services:
 
   # Redis - result backend
   redis:
-    image: redis:2.8.19
+    container_name: redis_app_urnode
+    image: redis:alpine
     hostname: redis
 
   backend:
@@ -40,9 +41,10 @@ services:
       context: ./
       dockerfile: ./Dockerfile.celery
     container_name: celery_server
-    command: celery -A Uturn worker --loglevel=info --without-gossip --without-mingle --without-heartbeat -Ofair --pool=solo
     volumes:
-      - "./backend:/opt/uturn/backend"
+      - "./urNode-backend:/app"
+    env_file:
+      - ./.env
     depends_on:
       - redis
       - postgres
