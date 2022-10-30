@@ -1,0 +1,12 @@
+apiVersion: v1
+data:
+  DJANGO_SECRET_KEY: 8a72377bee5adeff7158a7f9d5b72a31853a439e8a736c07b98b1051240f18cc
+  POSTGRES_DB: main
+  POSTGRES_PASSWORD: admin
+  POSTGRES_USER: admin
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: backend-env
+  name: env

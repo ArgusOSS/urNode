@@ -19,7 +19,9 @@ services:
     container_name: backend_app_urnode
     expose:
       - "8000"
-    image: "ghcr.io/argusoss/urnode-backend:latest"
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
     depends_on:
       - postgres
     ports:
@@ -35,7 +37,9 @@ services:
       - redis
 
   celery:
-    image: "ghcr.io/argusoss/urnode-celery-backend:latest"
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.celery
     container_name: celery_server
     volumes:
       - "./urNode-backend:/app"
