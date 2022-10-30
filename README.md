@@ -9,11 +9,27 @@
 
 Project still in development. Expect the backend and frontend to be ready in a couple of weeks.
 
-## Installations
+## Installation and running
 
 This project aims to be as fast to spin up as possible. And thus, if you have the appropriate utility installed (<a href="https://docs.docker.com/compose/install/">docker-compose</a> & <a href="https://docs.docker.com/engine/install/">docker cli + engine</a>.
 
 Before going further with any of the two steps, Install <a href="https://kubernetes.io/docs/tasks/tools/">Kubectl</a> to make it easier for you to interact with the kubernetes cluster.
+
+#### Setting up the django project
+
+do:
+
+```
+cp .env_template .env
+```
+
+Make sure to generate a unique `DJANGO_SECRET_KEY` for your project by running:
+
+```
+python3 -c "import secrets; print(secrets.token_hex())"
+```
+
+Paste the output into `DJANGO_SECRET_KEY` in your `.env` file. We can definitely use some automation here.
 
 Also, Now the next steps are divided into two categories:
 
