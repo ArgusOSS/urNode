@@ -11,7 +11,7 @@ Project still in development. Expect the backend and frontend to be ready in a c
 
 ## Installation and running
 
-This project aims to be as fast to spin up as possible. And thus, if you have the appropriate utility installed (<a href="https://docs.docker.com/compose/install/">docker-compose</a> & <a href="https://docs.docker.com/engine/install/">docker cli + engine</a>.
+This project aims to be as fast to spin up as possible. And thus, if you have the appropriate utility installed (<a href="https://docs.docker.com/compose/install/">docker-compose</a> & <a href="https://docs.docker.com/engine/install/">docker cli + engine</a>.)
 
 Before going further with any of the two steps, Install <a href="https://kubernetes.io/docs/tasks/tools/">Kubectl</a> to make it easier for you to interact with the kubernetes cluster.
 
