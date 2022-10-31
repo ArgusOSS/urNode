@@ -7,7 +7,7 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     env_file:
-      - ./.env
+      - Docker/.env
 
   # Redis - result backend
   redis:
@@ -27,7 +27,7 @@ services:
     volumes:
       - ./urNode-backend:/app
     env_file:
-      - ./.env
+      - Docker/.env
     links:
       - celery
       - rabbit
@@ -40,7 +40,7 @@ services:
     volumes:
       - "./urNode-backend:/app"
     env_file:
-      - ./.env
+      - Docker/.env
     depends_on:
       - redis
       - postgres
