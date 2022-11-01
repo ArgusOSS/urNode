@@ -36,6 +36,7 @@ jobs:
       - name: Build and publish a Docker image for ${{ github.repository }}
         uses: macbre/push-to-ghcr@master
         with:
+          #dockerfile: Docker/Dockerfile
           image_name: ${REPO_LC}-backend
           image_tag: ${{ env.TAG }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -46,7 +47,7 @@ jobs:
       - name: Build and publish a Docker image for ${{ github.repository }}
         uses: macbre/push-to-ghcr@master
         with:
-          dockerfile: Dockerfile.celery
+          dockerfile: Docker/Dockerfile.celery
           image_name: ${REPO_LC}-celery-backend
           image_tag: ${{ env.TAG }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
